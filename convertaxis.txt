@@ -1,10 +1,23 @@
-set cut_paste_input [stack 0]
-version 11.2 v3
-push $cut_paste_input
-NoOp {
- name Axis_convert
- selected true
- xpos -1357
- ypos 853
- addUserKnob {20 User}
- addUserKnob {22 convert T "for n in nuke.selectedNodes():\n    axs_t = n.knob('translate').getValue()\n    axs_r = n.knob('rotate').getValue()\n    axs_sc = n.knob('scaling').getValue()\n    axs_usc = n.knob('uniform_scale').getValue()\n    axs_sk = n.knob('skew').getValue()\n    axs_p = n.knob('pivot').getValue()\n    axs_n = n.knob('name').getValue()\n    axs_xform = n.knob('xform_order').getValue()\n    axs_xform = str(axs_xform)\n    axs_xrot = n.knob('rot_order').getValue()\n    axs_xrot = str(axs_xrot)\n#set\n    tr3d = nuke.createNode('Transform3D', inpanel=False)\n    tr3d\['translate'].setValue(axs_t, 0)\n    tr3d\['rotate'].setValue(axs_r, 0)\n    tr3d\['scaling'].setValue(axs_sc, 0)\n    tr3d\['uniform_scale'].setValue(axs_usc, 0)\n    tr3d\['skew'].setValue(axs_sk, 0)\n    tr3d\['pivot'].setValue(axs_p, 0)\n    tr3d\['label'].setValue(a
+for n in nuke.selectedNodes():
+    axs_t = n.knob('translate').getValue()
+    axs_r = n.knob('rotate').getValue()
+    axs_sc = n.knob('scaling').getValue()
+    axs_usc = n.knob('uniform_scale').getValue()
+    axs_sk = n.knob('skew').getValue()
+    axs_p = n.knob('pivot').getValue()
+    axs_n = n.knob('name').getValue()
+    axs_xform = n.knob('xform_order').getValue()
+    axs_xform = str(axs_xform)
+    axs_xrot = n.knob('rot_order').getValue()
+    axs_xrot = str(axs_xrot)
+#set
+    tr3d = nuke.createNode('Transform3D', inpanel=False)
+    tr3d['translate'].setValue(axs_t, 0)
+    tr3d['rotate'].setValue(axs_r, 0)
+    tr3d['scaling'].setValue(axs_sc, 0)
+    tr3d['uniform_scale'].setValue(axs_usc, 0)
+    tr3d['skew'].setValue(axs_sk, 0)
+    tr3d['pivot'].setValue(axs_p, 0)
+    tr3d['label'].setValue(axs_n)
+    tr3d['xform_order'].setValue(axs_xform)
+    tr3d['rot_order'].setValue(axs_xrot)
