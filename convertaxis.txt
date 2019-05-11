@@ -11,7 +11,7 @@ for n in nuke.selectedNodes():
     axs_xrot = n.knob('rot_order').getValue()
     axs_xrot = str(axs_xrot)
 #set
-    tr3d = nuke.createNode('Transform3D', inpanel=False)
+    tr3d = nuke.createNode('TransformGeo', inpanel=False)
     tr3d['translate'].setValue(axs_t, 0)
     tr3d['rotate'].setValue(axs_r, 0)
     tr3d['scaling'].setValue(axs_sc, 0)
